@@ -1,3 +1,5 @@
+pod deintegrate && pod install
+
 xcodebuild -list
 
 xcrun simctl list devices
