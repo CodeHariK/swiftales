@@ -1,4 +1,4 @@
-import { useNavigation, StaticScreenProps } from '@react-navigation/native';
+import { useNavigation, StaticScreenProps, NavigationProp } from '@react-navigation/native';
 import { View, TextInput } from 'react-native';
 import { Button, Text } from '@react-navigation/elements';
 import * as React from 'react';
@@ -6,7 +6,8 @@ import * as React from 'react';
 type CreatePostScreenProps = StaticScreenProps<{}>;
 
 export function CreatePost({ route }: CreatePostScreenProps) {
-    const navigation = useNavigation<any>();
+    const navigation = useNavigation<NavigationProp<any>>();
+
     const [postText, setPostText] = React.useState('');
 
     return (

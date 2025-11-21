@@ -1,4 +1,8 @@
+cd ios
+rm -rf Pods Podfile.lock
 pod deintegrate && pod install
+pod install
+cd ..
 
 xcodebuild -list
 

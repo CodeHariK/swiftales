@@ -12,6 +12,10 @@ import { Updates } from './screens/Updates';
 import { NotFound } from './screens/NotFound';
 import { Details } from './screens/Details';
 import { CreatePost } from './screens/CreatePost';
+import { Charts } from './screens/Charts';
+import { Pager } from './screens/Pager';
+import { ClashCards } from './screens/clash/ClashCards';
+import { ClashInfo } from './screens/clash/ClashInfo';
 
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import Feather from '@expo/vector-icons/Feather';
@@ -38,9 +42,41 @@ const HomeTabs = createBottomTabNavigator({
   },
 });
 
+const ClashRoyaleCardsStack = createNativeStackNavigator({
+  screens: {
+    ClashCards: {
+      screen: ClashCards,
+      options: ({ navigation }) => ({
+        title: 'Clash Royale Cards',
+        headerLeft: () => {
+          const parent = navigation.getParent();
+          const canGoBack = parent?.canGoBack() ?? false;
+          return canGoBack ? (
+            <HeaderButton onPress={() => parent?.goBack()}>
+              <Text>← Back</Text>
+            </HeaderButton>
+          ) : null;
+        },
+      }),
+    },
+    ClashInfo: {
+      screen: ClashInfo,
+      options: ({ route }) => ({
+        title: (route.params as { cardName?: string })?.cardName || 'Card Info',
+      }),
+    },
+  },
+});
+
 const RootStack = createNativeStackNavigator({
   // screenOptions: {
-  //   headerStyle: { backgroundColor: 'tomato' },
+  //   headerStyle: {
+  //     backgroundColor: '#f4511e',
+  //   },
+  //   headerTintColor: '#fff',
+  //   headerTitleStyle: {
+  //     fontWeight: 'bold',
+  //   },
   // },
   screens: {
     HomeTabs: {
@@ -52,8 +88,17 @@ const RootStack = createNativeStackNavigator({
     },
     Profile: {
       screen: Profile,
-      options: {
-      },
+      options: ({ route }) => ({
+        title: "Hello " + JSON.stringify(route.params),
+        headerStyle: {
+          backgroundColor: '#c53698',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }),
+
       linking: {
         path: ':user(@[a-zA-Z0-9-_]+)',
         parse: {
@@ -94,6 +139,24 @@ const RootStack = createNativeStackNavigator({
           </HeaderButton>
         ),
       }),
+    },
+    Charts: {
+      screen: Charts,
+      options: {
+        title: 'Charts',
+      },
+    },
+    Pager: {
+      screen: Pager,
+      options: {
+        title: 'Pager',
+      },
+    },
+    ClashRoyaleCards: {
+      screen: ClashRoyaleCardsStack,
+      options: {
+        headerShown: false, // Hide root header, let nested stack handle its own headers
+      },
     },
     NotFound: {
       screen: NotFound,

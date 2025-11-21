@@ -3,6 +3,14 @@
   "compilerOptions": {
     "moduleResolution": "bundler",
     "strict": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "tailwind.config": [
+        "./tailwind.config.js"
+      ]
+    }
   }
 }
