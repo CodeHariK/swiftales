@@ -39,7 +39,7 @@ struct HomeView: View {
                                 .font(.system(size: 16, weight: .medium))
                                 .foregroundColor(.gray)
 
-                            Text("Abhiraj Sisodiya")
+                            Text("Solea Stella")
                                 .font(.system(size: 24, weight: .bold))
                                 .foregroundColor(.black)
                         }

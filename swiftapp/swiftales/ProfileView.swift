@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @State private var email = "aashifa@gmail.com"
+    @State private var email = "stella@gmail.com"
     @State private var password = "***********"
     @State private var pincode = "450116"
     @State private var address = "216 St Paul's Rd,"
@@ -111,7 +111,7 @@ struct ProfileView: View {
                                 Text("Email Address")
                                     .font(.system(size: 12))
                                     .foregroundColor(.black)
-
+                        
                                 TextField("", text: $email)
                                     .font(.system(size: 14, weight: .semibold))
                                     .padding(.horizontal, 20)
