@@ -40,21 +40,26 @@ struct TwoColumnContentView_Previews: PreviewProvider {
         Group {
             TwoColumnContentView(
                 showExperiencePicker: .constant(false),
-                dataModel: .shared)
+                dataModel: .shared
+            )
             .environmentObject(NavigationModel(columnVisibility: .doubleColumn))
             TwoColumnContentView(
                 showExperiencePicker: .constant(false),
-                dataModel: .shared)
-            .environmentObject(NavigationModel(
-                columnVisibility: .doubleColumn,
-                selectedCategory: .dessert))
+                dataModel: .shared
+            )
+            .environmentObject(
+                NavigationModel(
+                    columnVisibility: .doubleColumn,
+                    selectedCategory: .dessert))
             TwoColumnContentView(
                 showExperiencePicker: .constant(false),
-                dataModel: .shared)
-            .environmentObject(NavigationModel(
-                columnVisibility: .doubleColumn,
-                selectedCategory: .dessert,
-                recipePath: [.mock]))
+                dataModel: .shared
+            )
+            .environmentObject(
+                NavigationModel(
+                    columnVisibility: .doubleColumn,
+                    selectedCategory: .dessert,
+                    recipePath: [.mock]))
         }
     }
 }

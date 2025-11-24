@@ -75,21 +75,26 @@ struct ThreeColumnContentView_Previews: PreviewProvider {
         Group {
             ThreeColumnContentView(
                 showExperiencePicker: .constant(false),
-                dataModel: .shared)
+                dataModel: .shared
+            )
             .environmentObject(NavigationModel(columnVisibility: .all))
             ThreeColumnContentView(
                 showExperiencePicker: .constant(false),
-                dataModel: .shared)
-            .environmentObject(NavigationModel(
-                columnVisibility: .all,
-                selectedCategory: .dessert))
+                dataModel: .shared
+            )
+            .environmentObject(
+                NavigationModel(
+                    columnVisibility: .all,
+                    selectedCategory: .dessert))
             ThreeColumnContentView(
                 showExperiencePicker: .constant(false),
-                dataModel: .shared)
-            .environmentObject(NavigationModel(
-                columnVisibility: .all,
-                selectedCategory: .dessert,
-                recipePath: [.mock]))
+                dataModel: .shared
+            )
+            .environmentObject(
+                NavigationModel(
+                    columnVisibility: .all,
+                    selectedCategory: .dessert,
+                    recipePath: [.mock]))
         }
     }
 }

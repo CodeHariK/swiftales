@@ -6,9 +6,12 @@ The main content view the app uses to present the navigation experience
  picker and change the app navigation architecture based on the user selection.
 */
 
+import Combine
+import Inject
 import SwiftUI
 
 struct ContentView: View {
+    @ObserveInjection var inject
     @SceneStorage("experience") private var experience: Experience?
     @SceneStorage("navigation") private var navigationData: Data?
     @StateObject private var navigationModel = NavigationModel()
@@ -52,6 +55,7 @@ struct ContentView: View {
                 navigationData = navigationModel.jsonData
             }
         }
+        .enableInjection()
     }
 }
 

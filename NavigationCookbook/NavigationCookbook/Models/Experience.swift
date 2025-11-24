@@ -23,7 +23,7 @@ enum Experience: Int, Identifiable, CaseIterable, Codable {
         case .challenge: return "hands.sparkles"
         }
     }
-    
+
     var localizedName: LocalizedStringKey {
         switch self {
         case .stack: return "Stack"
@@ -32,7 +32,7 @@ enum Experience: Int, Identifiable, CaseIterable, Codable {
         case .challenge: return "WWDC22 Challenge"
         }
     }
-    
+
     var localizedDescription: LocalizedStringKey {
         switch self {
         case .stack:

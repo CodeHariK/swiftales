@@ -46,7 +46,7 @@ struct RecipeGrid: View {
     }
 
     var columns: [GridItem] {
-        [ GridItem(.adaptive(minimum: 240)) ]
+        [GridItem(.adaptive(minimum: 240))]
     }
 }
 

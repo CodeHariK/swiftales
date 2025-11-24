@@ -6,7 +6,7 @@ xcodebuild -scheme swiftales -destination 'platform=iOS Simulator,arch=arm64,id=
 
 if [ $? -eq 0 ]; then
     echo "Build successful! Installing and launching..."
-    xcrun simctl install "3907C358-736E-4636-943B-C3F0BBC38399" "/Users/a24/Library/Developer/Xcode/DerivedData/swiftales-dcvvwukzlumlclapgofwwstfbkjz/Build/Products/Debug-iphonesimulator/swiftales.app"
+    xcrun simctl install "3907C358-736E-4636-943B-C3F0BBC38399" "/Users/a24/Library/Developer/Xcode/DerivedData/swiftales-dfblcdpqkauavvayuxpfokhuykaf/Build/Products/Debug-iphonesimulator/swiftales.app"
     xcrun simctl launch "3907C358-736E-4636-943B-C3F0BBC38399" run.shark.swiftales
     echo "App launched successfully!"
 else

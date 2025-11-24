@@ -5,20 +5,21 @@ Abstract:
 A navigation model used to persist and restore the navigation state.
 */
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 final class NavigationModel: ObservableObject, Codable {
     @Published var selectedCategory: Category?
     @Published var recipePath: [Recipe]
     @Published var columnVisibility: NavigationSplitViewVisibility
-    
+
     private lazy var decoder = JSONDecoder()
     private lazy var encoder = JSONEncoder()
 
-    init(columnVisibility: NavigationSplitViewVisibility = .automatic,
-         selectedCategory: Category? = nil,
-         recipePath: [Recipe] = []
+    init(
+        columnVisibility: NavigationSplitViewVisibility = .automatic,
+        selectedCategory: Category? = nil,
+        recipePath: [Recipe] = []
     ) {
         self.columnVisibility = columnVisibility
         self.selectedCategory = selectedCategory
@@ -34,7 +35,7 @@ final class NavigationModel: ObservableObject, Codable {
         get { try? encoder.encode(self) }
         set {
             guard let data = newValue,
-                  let model = try? decoder.decode(Self.self, from: data)
+                let model = try? decoder.decode(Self.self, from: data)
             else { return }
             selectedCategory = model.selectedCategory
             recipePath = model.recipePath

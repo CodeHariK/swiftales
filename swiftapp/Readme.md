@@ -17,6 +17,8 @@ xcrun simctl boot "iPhone_17_Pro"
 
 xcodebuild -scheme swiftales -destination 'platform=iOS Simulator,name=iPhone_17_Pro' build
 
-xcrun simctl install "iPhone_17_Pro" "/Users/a24/Library/Developer/Xcode/DerivedData/swiftales-dcvvwukzlumlclapgofwwstfbkjz/Build/Products/Debug-iphonesimulator/swiftales.app"
+xcodebuild -scheme swiftales -destination 'platform=macOS' build
+
+xcrun simctl install "iPhone_17_Pro" "/Users/a24/Library/Developer/Xcode/DerivedData/swiftales-dfblcdpqkauavvayuxpfokhuykaf/Build/Products/Debug-iphonesimulator/swiftales.app"
 
 xcrun simctl launch "iPhone_17_Pro" run.shark.swiftales

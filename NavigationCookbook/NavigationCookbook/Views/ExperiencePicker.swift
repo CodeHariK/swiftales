@@ -12,7 +12,7 @@ struct ExperiencePicker: View {
     @Binding var experience: Experience?
     @Environment(\.dismiss) private var dismiss
     @State private var selection: Experience?
-    
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -36,34 +36,34 @@ struct ExperiencePicker: View {
             }
             .scenePadding()
             #if os(iOS)
-            .safeAreaInset(edge: .bottom) {
-                ContinueButton(action: continueAction)
+                .safeAreaInset(edge: .bottom) {
+                    ContinueButton(action: continueAction)
                     .disabled(selection == nil)
                     .scenePadding()
-            }
+                }
             #endif
         }
         #if os(macOS)
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
-                    dismiss()
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    ContinueButton(action: continueAction)
+                    .disabled(selection == nil)
                 }
             }
-            ToolbarItem(placement: .confirmationAction) {
-                ContinueButton(action: continueAction)
-                    .disabled(selection == nil)
-            }
-        }
-        .frame(width: 600, height: 350)
+            .frame(width: 600, height: 350)
         #endif
         .interactiveDismissDisabled(selection == nil)
     }
-    
+
     var columns: [GridItem] {
-        [ GridItem(.adaptive(minimum: 250)) ]
+        [GridItem(.adaptive(minimum: 250))]
     }
-    
+
     func continueAction() {
         experience = selection
         dismiss()

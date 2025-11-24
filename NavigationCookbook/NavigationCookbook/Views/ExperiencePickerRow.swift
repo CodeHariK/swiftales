@@ -11,7 +11,7 @@ import SwiftUI
 struct ExperiencePickerItem: View {
     @Binding var selection: Experience?
     var experience: Experience
-    
+
     var body: some View {
         Button {
             selection = experience
@@ -26,7 +26,7 @@ private struct Label: View {
     @Binding var selection: Experience?
     var experience: Experience
     @State private var isHovering = false
-    
+
     var body: some View {
         HStack(spacing: 20) {
             Image(systemName: experience.imageName)
@@ -47,9 +47,9 @@ private struct Label: View {
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .fill(selection == experience ?
-                      AnyShapeStyle(Color.accentColor) :
-                        AnyShapeStyle(BackgroundStyle()))
+                .fill(
+                    selection == experience
+                        ? AnyShapeStyle(Color.accentColor) : AnyShapeStyle(BackgroundStyle()))
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .stroke(isHovering ? Color.accentColor : .clear)
         }
@@ -60,7 +60,7 @@ private struct Label: View {
             }
         }
     }
-    
+
     func shapeStyle<S: ShapeStyle>(_ style: S) -> some ShapeStyle {
         if selection == experience {
             return AnyShapeStyle(.background)

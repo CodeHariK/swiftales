@@ -5,8 +5,8 @@ Abstract:
 An observable data model of published recipes and miscellaneous groupings.
 */
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 class DataModel: ObservableObject {
     @Published var recipes: [Recipe] = []
@@ -129,12 +129,12 @@ private let builtInRecipes: [Recipe] = {
             ingredients: []),
         "Niçoise": Recipe(
             name: "Niçoise", category: .salad,
-            ingredients: [])
+            ingredients: []),
     ]
 
     recipes["Apple Pie"]!.related = [
         recipes["Pie Crust"]!.id,
-        recipes["Fruit Pie Filling"]!.id
+        recipes["Fruit Pie Filling"]!.id,
     ]
 
     recipes["Pie Crust"]!.related = [recipes["Fruit Pie Filling"]!.id]

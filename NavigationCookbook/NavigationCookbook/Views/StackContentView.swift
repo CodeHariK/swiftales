@@ -51,14 +51,17 @@ struct StackContentView_Previews: PreviewProvider {
     static var previews: some View {
         StackContentView(
             showExperiencePicker: .constant(false),
-            dataModel: .shared)
+            dataModel: .shared
+        )
         .environmentObject(NavigationModel())
-        
+
         StackContentView(
             showExperiencePicker: .constant(false),
-            dataModel: .shared)
-        .environmentObject(NavigationModel(
-            selectedCategory: .dessert,
-            recipePath: [.mock]))
+            dataModel: .shared
+        )
+        .environmentObject(
+            NavigationModel(
+                selectedCategory: .dessert,
+                recipePath: [.mock]))
     }
 }

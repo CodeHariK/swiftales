@@ -12,38 +12,37 @@ struct ContinueButton: View {
     var body: some View {
         Button("Continue", action: action)
             #if os(macOS)
-            .buttonStyle(.borderedProminent)
+                .buttonStyle(.borderedProminent)
             #else
-            .buttonStyle(ContinueButtonStyle())
+                .buttonStyle(ContinueButtonStyle())
             #endif
     }
 }
 
 #if os(iOS)
-struct ContinueButtonStyle: ButtonStyle {
-    @Environment(\.isEnabled) private var isEnabled
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .fontWeight(.bold)
-            .frame(maxWidth: horizontalSizeClass == .compact ?
-                .infinity : 280)
-            .foregroundStyle(.background)
-            .padding()
-            .background {
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(isEnabled ? Color.accentColor : .gray.opacity(0.6))
-                    .opacity(configuration.isPressed ? 0.8 : 1)
-                    .scaleEffect(configuration.isPressed ? 0.98 : 1)
-                    .animation(.easeInOut, value: configuration.isPressed)
-            }
+    struct ContinueButtonStyle: ButtonStyle {
+        @Environment(\.isEnabled) private var isEnabled
+        @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .fontWeight(.bold)
+                .frame(maxWidth: horizontalSizeClass == .compact ? .infinity : 280)
+                .foregroundStyle(.background)
+                .padding()
+                .background {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(isEnabled ? Color.accentColor : .gray.opacity(0.6))
+                        .opacity(configuration.isPressed ? 0.8 : 1)
+                        .scaleEffect(configuration.isPressed ? 0.98 : 1)
+                        .animation(.easeInOut, value: configuration.isPressed)
+                }
+        }
     }
-}
 #endif
 
 struct ContinueButton_Previews: PreviewProvider {
     static var previews: some View {
-        ContinueButton { }
+        ContinueButton {}
     }
 }

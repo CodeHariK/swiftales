@@ -59,9 +59,9 @@ private struct Content<Link: View>: View {
     var narrowDetails: some View {
         let alignment: HorizontalAlignment
         #if os(macOS)
-        alignment = .leading
+            alignment = .leading
         #else
-        alignment = .center
+            alignment = .center
         #endif
         return VStack(alignment: alignment) {
             title
@@ -70,13 +70,13 @@ private struct Content<Link: View>: View {
             relatedRecipes
         }
     }
-    
+
     var title: some View {
         #if os(macOS)
-        Text(recipe.name)
-            .font(.largeTitle)
+            Text(recipe.name)
+                .font(.largeTitle)
         #else
-        EmptyView()
+            EmptyView()
         #endif
     }
 
@@ -120,7 +120,7 @@ private struct Content<Link: View>: View {
     }
 
     var columns: [GridItem] {
-        [ GridItem(.adaptive(minimum: 120, maximum: 120)) ]
+        [GridItem(.adaptive(minimum: 120, maximum: 120))]
     }
 }
 
@@ -131,7 +131,7 @@ struct RecipeDetail_Previews: PreviewProvider {
             RecipeDetail(recipe: .mock, relatedLink: link)
         }
     }
-    
+
     static func link(recipe: Recipe) -> some View {
         EmptyView()
     }
