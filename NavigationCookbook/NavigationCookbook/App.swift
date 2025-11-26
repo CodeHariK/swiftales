@@ -15,17 +15,22 @@ struct NavigationCookbookApp: App {
         #if DEBUG
             #if os(macOS)
                 Bundle(
-                    path: "/Applications/InjectionNext.app/Contents/Resources/macOSInjection.bundle"
+                    path:
+                        "/Applications/InjectionIII.app/Contents/Resources/macOSInjection.bundle"
                 )?
                 .load()
             #elseif os(iOS)
                 Bundle(
-                    path: "/Applications/InjectionNext.app/Contents/Resources/iOSInjection.bundle")?
-                    .load()
+                    path:
+                        "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle"
+                )?
+                .load()
             #elseif os(tvOS)
                 Bundle(
-                    path: "/Applications/InjectionNext.app/Contents/Resources/tvOSInjection.bundle")?
-                    .load()
+                    path:
+                        "/Applications/InjectionIII.app/Contents/Resources/tvOSInjection.bundle"
+                )?
+                .load()
             #endif
         #endif
     }
@@ -33,7 +38,10 @@ struct NavigationCookbookApp: App {
     var body: some Scene {
         WindowGroup {
 
-            App2(itemCount: 9)
+            ThreadsApp()
+
+                // TwinmojiGame().preferredColorScheme(.light)
+
                 // MainAppView()
                 // ContentView()
 

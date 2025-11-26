@@ -73,7 +73,11 @@ struct ProfileViewContent: View {
                                 ZStack {
                                     Circle()
                                         #if os(macOS)
-                                            .fill(Color(NSColor.controlBackgroundColor))
+                                            .fill(
+                                                Color(
+                                                    NSColor
+                                                        .controlBackgroundColor)
+                                            )
                                         #else
                                             .fill(Color(.systemBackground))
                                         #endif
@@ -109,13 +113,17 @@ struct ProfileViewContent: View {
                                     .padding(.horizontal, 20)
                                     .frame(height: 48)
                                     #if os(macOS)
-                                        .background(Color(NSColor.textBackgroundColor))
+                                        .background(
+                                            Color(NSColor.textBackgroundColor))
                                     #else
-                                        .background(Color(.secondarySystemBackground))
+                                        .background(
+                                            Color(.secondarySystemBackground))
                                     #endif
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.gray.opacity(0.8), lineWidth: 1)
+                                            .stroke(
+                                                Color.gray.opacity(0.8),
+                                                lineWidth: 1)
                                     )
                             }
 
@@ -132,7 +140,9 @@ struct ProfileViewContent: View {
                                         // Change password action
                                     }
                                     .font(.system(size: 12, weight: .medium))
-                                    .foregroundColor(Color(red: 0.97, green: 0.22, blue: 0.34))
+                                    .foregroundColor(
+                                        Color(
+                                            red: 0.97, green: 0.22, blue: 0.34))
                                 }
 
                                 TextField("", text: $password)
@@ -140,13 +150,17 @@ struct ProfileViewContent: View {
                                     .padding(.horizontal, 20)
                                     .frame(height: 48)
                                     #if os(macOS)
-                                        .background(Color(NSColor.textBackgroundColor))
+                                        .background(
+                                            Color(NSColor.textBackgroundColor))
                                     #else
-                                        .background(Color(.secondarySystemBackground))
+                                        .background(
+                                            Color(.secondarySystemBackground))
                                     #endif
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.gray.opacity(0.8), lineWidth: 1)
+                                            .stroke(
+                                                Color.gray.opacity(0.8),
+                                                lineWidth: 1)
                                     )
                             }
                         }
@@ -180,13 +194,17 @@ struct ProfileViewContent: View {
                                     .padding(.horizontal, 20)
                                     .frame(height: 48)
                                     #if os(macOS)
-                                        .background(Color(NSColor.textBackgroundColor))
+                                        .background(
+                                            Color(NSColor.textBackgroundColor))
                                     #else
-                                        .background(Color(.secondarySystemBackground))
+                                        .background(
+                                            Color(.secondarySystemBackground))
                                     #endif
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.gray.opacity(0.8), lineWidth: 1)
+                                            .stroke(
+                                                Color.gray.opacity(0.8),
+                                                lineWidth: 1)
                                     )
                             }
 
@@ -201,13 +219,17 @@ struct ProfileViewContent: View {
                                     .padding(.horizontal, 20)
                                     .frame(height: 48)
                                     #if os(macOS)
-                                        .background(Color(NSColor.textBackgroundColor))
+                                        .background(
+                                            Color(NSColor.textBackgroundColor))
                                     #else
-                                        .background(Color(.secondarySystemBackground))
+                                        .background(
+                                            Color(.secondarySystemBackground))
                                     #endif
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.gray.opacity(0.8), lineWidth: 1)
+                                            .stroke(
+                                                Color.gray.opacity(0.8),
+                                                lineWidth: 1)
                                     )
                             }
 
@@ -222,13 +244,17 @@ struct ProfileViewContent: View {
                                     .padding(.horizontal, 20)
                                     .frame(height: 48)
                                     #if os(macOS)
-                                        .background(Color(NSColor.textBackgroundColor))
+                                        .background(
+                                            Color(NSColor.textBackgroundColor))
                                     #else
-                                        .background(Color(.secondarySystemBackground))
+                                        .background(
+                                            Color(.secondarySystemBackground))
                                     #endif
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.gray.opacity(0.8), lineWidth: 1)
+                                            .stroke(
+                                                Color.gray.opacity(0.8),
+                                                lineWidth: 1)
                                     )
                             }
 
@@ -240,7 +266,9 @@ struct ProfileViewContent: View {
 
                                 HStack {
                                     TextField("", text: $state)
-                                        .font(.system(size: 14, weight: .medium))
+                                        .font(
+                                            .system(size: 14, weight: .medium)
+                                        )
                                         .padding(.horizontal, 20)
 
                                     Spacer()
@@ -252,13 +280,17 @@ struct ProfileViewContent: View {
                                 }
                                 .frame(height: 48)
                                 #if os(macOS)
-                                    .background(Color(NSColor.textBackgroundColor))
+                                    .background(
+                                        Color(NSColor.textBackgroundColor))
                                 #else
-                                    .background(Color(.secondarySystemBackground))
+                                    .background(
+                                        Color(.secondarySystemBackground))
                                 #endif
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.gray.opacity(0.8), lineWidth: 1)
+                                        .stroke(
+                                            Color.gray.opacity(0.8),
+                                            lineWidth: 1)
                                 )
                             }
 
@@ -273,13 +305,17 @@ struct ProfileViewContent: View {
                                     .padding(.horizontal, 20)
                                     .frame(height: 48)
                                     #if os(macOS)
-                                        .background(Color(NSColor.textBackgroundColor))
+                                        .background(
+                                            Color(NSColor.textBackgroundColor))
                                     #else
-                                        .background(Color(.secondarySystemBackground))
+                                        .background(
+                                            Color(.secondarySystemBackground))
                                     #endif
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.gray.opacity(0.8), lineWidth: 1)
+                                            .stroke(
+                                                Color.gray.opacity(0.8),
+                                                lineWidth: 1)
                                     )
                             }
                         }
@@ -313,13 +349,17 @@ struct ProfileViewContent: View {
                                     .padding(.horizontal, 20)
                                     .frame(height: 48)
                                     #if os(macOS)
-                                        .background(Color(NSColor.textBackgroundColor))
+                                        .background(
+                                            Color(NSColor.textBackgroundColor))
                                     #else
-                                        .background(Color(.secondarySystemBackground))
+                                        .background(
+                                            Color(.secondarySystemBackground))
                                     #endif
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.gray.opacity(0.8), lineWidth: 1)
+                                            .stroke(
+                                                Color.gray.opacity(0.8),
+                                                lineWidth: 1)
                                     )
                             }
 
@@ -334,13 +374,17 @@ struct ProfileViewContent: View {
                                     .padding(.horizontal, 20)
                                     .frame(height: 48)
                                     #if os(macOS)
-                                        .background(Color(NSColor.textBackgroundColor))
+                                        .background(
+                                            Color(NSColor.textBackgroundColor))
                                     #else
-                                        .background(Color(.secondarySystemBackground))
+                                        .background(
+                                            Color(.secondarySystemBackground))
                                     #endif
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.gray.opacity(0.8), lineWidth: 1)
+                                            .stroke(
+                                                Color.gray.opacity(0.8),
+                                                lineWidth: 1)
                                     )
                             }
 
@@ -355,13 +399,17 @@ struct ProfileViewContent: View {
                                     .padding(.horizontal, 20)
                                     .frame(height: 48)
                                     #if os(macOS)
-                                        .background(Color(NSColor.textBackgroundColor))
+                                        .background(
+                                            Color(NSColor.textBackgroundColor))
                                     #else
-                                        .background(Color(.secondarySystemBackground))
+                                        .background(
+                                            Color(.secondarySystemBackground))
                                     #endif
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.gray.opacity(0.8), lineWidth: 1)
+                                            .stroke(
+                                                Color.gray.opacity(0.8),
+                                                lineWidth: 1)
                                     )
                             }
                         }
@@ -378,7 +426,9 @@ struct ProfileViewContent: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .frame(height: 48)
-                            .background(Color(red: 0.97, green: 0.22, blue: 0.34))
+                            .background(
+                                Color(red: 0.97, green: 0.22, blue: 0.34)
+                            )
                             .cornerRadius(8)
                     }
                     .padding(.horizontal, 24)
@@ -402,7 +452,7 @@ struct ProfileViewContent: View {
     }
 }
 
-struct ProfileView: View {
+struct App1ProfileView: View {
     var body: some View {
         NavigationView {
             ProfileViewContent()

@@ -35,7 +35,7 @@ enum App1Section: String, CaseIterable, Identifiable {
             #if os(macOS)
                 ProfileViewContent()
             #else
-                ProfileView()
+                App1ProfileView()
             #endif
         case .settings:
             #if os(macOS)
@@ -51,7 +51,8 @@ struct MainAppView: View {
     @State private var selectedTab = 0
     #if os(macOS)
         @State private var selectedSection: App1Section? = .home
-        @State private var columnVisibility = NavigationSplitViewVisibility.doubleColumn
+        @State private var columnVisibility = NavigationSplitViewVisibility
+            .doubleColumn
     #endif
 
     var body: some View {
@@ -85,7 +86,7 @@ struct MainAppView: View {
                     }
                     .tag(0)
 
-                ProfileView()
+                App1ProfileView()
                     .tabItem {
                         Image(systemName: "person.fill")
                         Text("Profile")
