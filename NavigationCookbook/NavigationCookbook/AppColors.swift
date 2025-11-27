@@ -33,12 +33,12 @@ extension Color {
         #if os(iOS)
             return adaptiveColor(
                 light: UIColor(white: 0.0, alpha: 1.0),  // Black in light mode
-                dark: UIColor(white: 0.1, alpha: 1.0)  // Dark gray in dark mode
+                dark: UIColor(white: 0.2, alpha: 1.0)  // Dark gray in dark mode
             )
         #else
             return adaptiveColor(
                 light: NSColor(white: 0.0, alpha: 1.0),  // Black in light mode
-                dark: NSColor(white: 0.1, alpha: 1.0)  // Dark gray in dark mode
+                dark: NSColor(white: 0.2, alpha: 1.0)  // Dark gray in dark mode
             )
         #endif
     }

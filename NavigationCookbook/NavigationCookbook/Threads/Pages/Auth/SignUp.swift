@@ -3,8 +3,7 @@ import SwiftUI
 struct SignUpView: View {
     @ObserveInjection var inject
 
-    @State private var email = ""
-    @State private var password = ""
+    @StateObject private var signUpViewModel = AuthModal()
 
     @Environment(\.dismiss) private var dismiss
 
@@ -19,15 +18,19 @@ struct SignUpView: View {
                 .padding()
 
             VStack {
-                TextField("Enter your email", text: $email)
+                TextField("Enter your email", text: $signUpViewModel.email)
                     .modifier(FormTextFieldModifier())
                     .autocorrectionDisabled()
-                SecureField("Enter your password", text: $password)
+                    .autocapitalization(.none)
+                SecureField("Enter your password", text: $signUpViewModel.password)
                     .modifier(FormTextFieldModifier())
+                    .autocapitalization(.none)
             }
 
             Button {
-                print("Sign up")
+                Task {
+                    try await signUpViewModel.createUser()
+                }
             } label: {
                 Text("Sign up")
                     .modifier(ExpandedFilledButtonStyle())

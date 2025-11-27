@@ -3,25 +3,28 @@ import SwiftUI
 struct ProfileView: View {
     @ObserveInjection var inject
 
+    @ObservedObject var userViewModel = UserService.shared
+
     @State private var selectedFilter = ProfileThreadFilter.threads
 
     @Namespace var animation
 
     var body: some View {
+
         NavigationStack {
             ScrollView(showsIndicators: false) {
                 HStack(alignment: .top, spacing: 12) {
 
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Stella Solea")
+                        Text(userViewModel.currentUser?.email ?? "")
                             .font(.title2)
                             .fontWeight(.semibold)
-                        Text("Stella Solea")
+                        Text(userViewModel.currentUser?.id ?? "")
                             .font(.subheadline)
-                        Text("Stella Solea")
-                            .font(.footnote)
-                        Text("Stella Solea")
-                            .font(.caption)
+                        if let bio = userViewModel.currentUser?.bio {
+                            Text(bio)
+                                .font(.footnote)
+                        }
                     }
 
                     Spacer()
@@ -84,6 +87,16 @@ struct ProfileView: View {
             .navigationTitle("Profile")
             #if os(iOS)
                 .navigationBarTitleDisplayMode(.inline)
+
+                .toolbar(content: {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            AuthService.shared.signOut()
+                        } label: {
+                            Image(systemName: "arrow.right")
+                        }
+                    }
+                })
             #endif
         }
         .enableInjection()

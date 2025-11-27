@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB7ED0352ED898740007C2B3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FB7ED0342ED898740007C2B3 /* FirebaseAuth */; };
+		FB7ED0372ED898740007C2B3 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = FB7ED0362ED898740007C2B3 /* FirebaseCore */; };
+		FB7ED0392ED898740007C2B3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FB7ED0382ED898740007C2B3 /* FirebaseFirestore */; };
+		FB7ED03B2ED898740007C2B3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FB7ED03A2ED898740007C2B3 /* FirebaseStorage */; };
 		FBDD68062ED4A6D60011D58C /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = FBDD68052ED4A6D60011D58C /* Inject */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +32,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBDD68062ED4A6D60011D58C /* Inject in Frameworks */,
+				FB7ED0392ED898740007C2B3 /* FirebaseFirestore in Frameworks */,
+				FB7ED0372ED898740007C2B3 /* FirebaseCore in Frameworks */,
+				FB7ED03B2ED898740007C2B3 /* FirebaseStorage in Frameworks */,
+				FB7ED0352ED898740007C2B3 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +79,10 @@
 			name = NavigationCookbook;
 			packageProductDependencies = (
 				FBDD68052ED4A6D60011D58C /* Inject */,
+				FB7ED0342ED898740007C2B3 /* FirebaseAuth */,
+				FB7ED0362ED898740007C2B3 /* FirebaseCore */,
+				FB7ED0382ED898740007C2B3 /* FirebaseFirestore */,
+				FB7ED03A2ED898740007C2B3 /* FirebaseStorage */,
 			);
 			productName = NavigationCookbook;
 			productReference = FBDD67CA2ED4A1DE0011D58C /* NavigationCookbook.app */;
@@ -102,6 +114,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				FBDD68042ED4A6D60011D58C /* XCRemoteSwiftPackageReference "Inject" */,
+				FB7ED0332ED898740007C2B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FBDD67CB2ED4A1DE0011D58C /* Products */;
@@ -280,7 +293,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = shark.NavigationCookbook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.cookbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -323,7 +336,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = shark.NavigationCookbook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.cookbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -363,6 +376,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FB7ED0332ED898740007C2B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.6.0;
+			};
+		};
 		FBDD68042ED4A6D60011D58C /* XCRemoteSwiftPackageReference "Inject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krzysztofzablocki/Inject.git";
@@ -374,6 +395,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FB7ED0342ED898740007C2B3 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB7ED0332ED898740007C2B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		FB7ED0362ED898740007C2B3 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB7ED0332ED898740007C2B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		FB7ED0382ED898740007C2B3 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB7ED0332ED898740007C2B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		FB7ED03A2ED898740007C2B3 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB7ED0332ED898740007C2B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		FBDD68052ED4A6D60011D58C /* Inject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FBDD68042ED4A6D60011D58C /* XCRemoteSwiftPackageReference "Inject" */;

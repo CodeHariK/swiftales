@@ -3,8 +3,7 @@ import SwiftUI
 struct LoginView: View {
     @ObserveInjection var inject
 
-    @State private var email = ""
-    @State private var password = ""
+    @StateObject private var loginViewModel = AuthModal()
 
     var body: some View {
         NavigationStack {
@@ -18,11 +17,13 @@ struct LoginView: View {
                     .padding()
 
                 VStack {
-                    TextField("Enter your email", text: $email)
+                    TextField("Enter your email", text: $loginViewModel.email)
                         .modifier(FormTextFieldModifier())
                         .autocorrectionDisabled()
-                    SecureField("Enter your password", text: $password)
+                        .autocapitalization(.none)
+                    SecureField("Enter your password", text: $loginViewModel.password)
                         .modifier(FormTextFieldModifier())
+                        .autocapitalization(.none)
                 }
 
                 NavigationLink(destination: ForgetPasswordView()) {
@@ -31,7 +32,9 @@ struct LoginView: View {
                 }
 
                 Button {
-                    print("Login")
+                    Task {
+                        try await loginViewModel.loginWithEmail()
+                    }
                 } label: {
                     Text("Login")
                         .modifier(ExpandedFilledButtonStyle())

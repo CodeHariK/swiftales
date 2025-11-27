@@ -9,8 +9,24 @@ the root content view.
 @_exported import Inject
 import SwiftUI
 
+import FirebaseCore
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions:
+        [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        FirebaseApp.configure()
+
+        return true
+    }
+}
+
 @main
 struct NavigationCookbookApp: App {
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     init() {
         #if DEBUG
             #if os(macOS)
