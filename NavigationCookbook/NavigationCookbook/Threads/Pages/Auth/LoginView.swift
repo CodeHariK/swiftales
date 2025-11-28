@@ -17,13 +17,20 @@ struct LoginView: View {
                     .padding()
 
                 VStack {
-                    TextField("Enter your email", text: $loginViewModel.email)
-                        .modifier(FormTextFieldModifier())
-                        .autocorrectionDisabled()
-                        .autocapitalization(.none)
-                    SecureField("Enter your password", text: $loginViewModel.password)
-                        .modifier(FormTextFieldModifier())
-                        .autocapitalization(.none)
+                    FormTextField(
+                        placeholder: "Enter your email",
+                        text: $loginViewModel.email,
+                        autocorrectionDisabled: true,
+                        autocapitalization: .none
+                    )
+
+                    FormTextField(
+                        placeholder: "Enter your password",
+                        text: $loginViewModel.password,
+                        autocorrectionDisabled: true,
+                        autocapitalization: .none,
+                        secure: true
+                    )
                 }
 
                 NavigationLink(destination: ForgetPasswordView()) {
@@ -31,14 +38,12 @@ struct LoginView: View {
                         .modifier(LinkTextModifier())
                 }
 
-                Button {
-                    Task {
-                        try await loginViewModel.loginWithEmail()
-                    }
-                } label: {
-                    Text("Login")
-                        .modifier(ExpandedFilledButtonStyle())
-                }
+                FilledButton(
+                    action: {
+                        Task {
+                            try await loginViewModel.loginWithEmail()
+                        }
+                    }, title: "Login", flexible: true)
 
                 Spacer()
 
@@ -52,6 +57,7 @@ struct LoginView: View {
                         .modifier(LinkTextModifier(center: true))
                 }
             }
+            .padding()
         }
         //----------------------------------
         .enableInjection()

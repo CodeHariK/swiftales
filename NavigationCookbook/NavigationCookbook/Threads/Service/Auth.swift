@@ -3,7 +3,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import Foundation
 
-struct ThreadsUser: Identifiable, Codable {
+struct ThreadsUser: Identifiable, Codable, Hashable {
     let id: String
     let email: String
     let profileImageURL: String?
@@ -38,7 +38,10 @@ class AuthService {
     init() {
         self.authStateHandle = Auth.auth().addStateDidChangeListener {
             auth, user in
-            NSLog("User session changed: \(user?.uid ?? "")")
+
+            NSLog(
+                "--------> User session changed: \(user?.uid ?? "") \(user?.email ?? "")"
+            )
             self.userSession = user
 
             if user != nil {
@@ -52,7 +55,7 @@ class AuthService {
     @MainActor
     func loginWithEmail(email: String, password: String) async throws {
         do {
-            NSLog("Logging in")
+            NSLog("Logging in", email, password)
             let result = try await Auth.auth().signIn(
                 withEmail: email, password: password)
             NSLog("User logged in: \(result.user.uid)")
@@ -100,7 +103,8 @@ class AuthService {
 
             let db = Firestore.firestore()
             let docRef = db.collection("users").document(userSession!.uid)
-            try docRef.setData(from: user)
+            try docRef.setData(
+                from: user, encoder: Firestore.Encoder(), completion: nil)
         } catch {
             NSLog("Error uploading user data: \(error)")
             throw error

@@ -49,7 +49,9 @@ struct HomeViewContent: View {
                             .padding(.horizontal, 24)
 
                         LazyVGrid(
-                            columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16
+                            columns: Array(
+                                repeating: GridItem(.flexible()), count: 2),
+                            spacing: 16
                         ) {
                             QuickActionCard(
                                 title: "Send Money",
@@ -92,7 +94,8 @@ struct HomeViewContent: View {
                                 // View all transactions
                             }
                             .font(.system(size: 14, weight: .medium))
-                            .foregroundColor(Color(red: 0.97, green: 0.22, blue: 0.34))
+                            .foregroundColor(
+                                Color(red: 0.97, green: 0.22, blue: 0.34))
                         }
                         .padding(.horizontal, 24)
 
@@ -192,7 +195,10 @@ struct TransactionRow: View {
     var body: some View {
         HStack(spacing: 12) {
             Circle()
-                .fill(isExpense ? Color.red.opacity(0.1) : Color.green.opacity(0.1))
+                .fill(
+                    isExpense
+                        ? Color.red.opacity(0.1) : Color.green.opacity(0.1)
+                )
                 .frame(width: 40, height: 40)
                 .overlay(
                     Image(systemName: isExpense ? "arrow.up" : "arrow.down")

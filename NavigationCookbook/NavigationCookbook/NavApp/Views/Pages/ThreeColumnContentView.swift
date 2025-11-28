@@ -50,7 +50,8 @@ struct ThreeColumnContentView: View {
                 }
             }
         } detail: {
-            RecipeDetail(recipe: navigationModel.selectedRecipe) { relatedRecipe in
+            RecipeDetail(recipe: navigationModel.selectedRecipe) {
+                relatedRecipe in
                 Button {
                     navigationModel.selectedCategory = relatedRecipe.category
                     navigationModel.selectedRecipe = relatedRecipe
@@ -79,14 +80,16 @@ struct ThreeColumnContentView_Previews: PreviewProvider {
                 .environmentObject(
                     NavigationModel(
                         columnVisibility: .all,
-                        selectedCategory: .dessert))
+                        selectedCategory: .dessert)
+                )
                 .environmentObject(AppStore.shared)
             ThreeColumnContentView()
                 .environmentObject(
                     NavigationModel(
                         columnVisibility: .all,
                         selectedCategory: .dessert,
-                        recipePath: [.mock]))
+                        recipePath: [.mock])
+                )
                 .environmentObject(AppStore.shared)
         }
     }

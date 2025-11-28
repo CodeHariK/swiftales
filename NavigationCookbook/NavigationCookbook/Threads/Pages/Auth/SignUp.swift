@@ -18,23 +18,28 @@ struct SignUpView: View {
                 .padding()
 
             VStack {
-                TextField("Enter your email", text: $signUpViewModel.email)
-                    .modifier(FormTextFieldModifier())
-                    .autocorrectionDisabled()
-                    .autocapitalization(.none)
-                SecureField("Enter your password", text: $signUpViewModel.password)
-                    .modifier(FormTextFieldModifier())
-                    .autocapitalization(.none)
+                FormTextField(
+                    placeholder: "Enter your email",
+                    text: $signUpViewModel.email,
+                    autocorrectionDisabled: true,
+                    autocapitalization: .none
+                )
+
+                FormTextField(
+                    placeholder: "Enter your password",
+                    text: $signUpViewModel.password,
+                    autocorrectionDisabled: true,
+                    autocapitalization: .none,
+                    secure: true
+                )
             }
 
-            Button {
-                Task {
-                    try await signUpViewModel.createUser()
-                }
-            } label: {
-                Text("Sign up")
-                    .modifier(ExpandedFilledButtonStyle())
-            }
+            FilledButton(
+                action: {
+                    Task {
+                        try await signUpViewModel.createUser()
+                    }
+                }, title: "Sign up", flexible: true)
 
             Spacer()
 
@@ -48,6 +53,8 @@ struct SignUpView: View {
             }
 
         }
+        .padding()
+
         //----------------------------------
         .enableInjection()
         //----------------------------------

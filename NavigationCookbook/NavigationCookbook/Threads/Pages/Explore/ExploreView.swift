@@ -1,4 +1,20 @@
+import Combine
 import SwiftUI
+
+class ExploreViewModel: ObservableObject {
+    @Published var users: [ThreadsUser] = []
+
+    init() {
+        Task {
+            do {
+                let users = try await UserService.shared.getUsers()
+                self.users = users
+            } catch {
+                NSLog("Error loading users: \(error)")
+            }
+        }
+    }
+}
 
 struct ExploreView: View {
 
@@ -6,17 +22,24 @@ struct ExploreView: View {
 
     @State private var searchText = ""
 
+    @StateObject private var viewModel = ExploreViewModel()
+
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
                 LazyVStack {
-                    ForEach(0..<10, id: \.self) { index in
-                        ExploreItemView()
+                    ForEach(viewModel.users, id: \.self) { user in
+                        NavigationLink(value: user) {
+                            ExploreItemView(user: user)
+                        }
                     }
                 }
             }
             .navigationTitle("Search")
             .searchable(text: $searchText)
+            .navigationDestination(for: ThreadsUser.self) { user in
+                UserProfileView(user: user)
+            }
             #if os(iOS)
                 .navigationBarTitleDisplayMode(.inline)
             #endif
@@ -29,13 +52,16 @@ struct ExploreView: View {
 }
 
 struct ExploreItemView: View {
+
+    var user: ThreadsUser
+
     var body: some View {
         VStack {
-            HStack(alignment: .top, spacing: 12) {
+            HStack(alignment: .center, spacing: 12) {
                 Avatar()
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Stella Solea")
+                    Text(user.email)
                         .font(.subheadline)
                         .fontWeight(.semibold)
 
@@ -46,13 +72,7 @@ struct ExploreItemView: View {
 
                 Spacer()
 
-                Text("Follow")
-                    .font(.subheadline)
-                    .frame(width: 100, height: 32)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color(.systemGray), lineWidth: 1)
-                    )
+                OutlinedButton(action: {}, title: "Follow")
             }
             .foregroundColor(.primary)
             .padding(.horizontal, 16)

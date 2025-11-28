@@ -40,9 +40,11 @@ enum Experience: Int, Identifiable, CaseIterable, Codable {
         case .twoColumn:
             return "Presents views in two columns: sidebar and detail."
         case .threeColumn:
-            return "Presents views in three columns: sidebar, content, and detail."
+            return
+                "Presents views in three columns: sidebar, content, and detail."
         case .challenge:
-            return "A coding challenge to explore the new navigation architectures."
+            return
+                "A coding challenge to explore the new navigation architectures."
         }
     }
 }

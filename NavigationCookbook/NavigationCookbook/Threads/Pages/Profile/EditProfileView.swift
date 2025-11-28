@@ -1,16 +1,20 @@
+import PhotosUI
 import SwiftUI
 
 struct EditProfileView: View {
     @ObserveInjection var inject
 
     @State private var bio = ""
-    @State private var link = ""
     @State private var isPrivateProfile = false
+
+    @Environment(\.dismiss) private var dismiss
+
+    @ObservedObject var userViewModel = UserService.shared
 
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(.systemFill)
+                Color(.systemBackground)
                     .edgesIgnoringSafeArea([.bottom, .horizontal])
 
                 VStack {
@@ -24,7 +28,21 @@ struct EditProfileView: View {
                         }
                         Spacer()
 
-                        Avatar()
+                        let profileImage = userViewModel.profileImage
+                        PhotosPicker(
+                            selection: $userViewModel.selectedItem,
+                            matching: .images
+                        ) {
+                            if let image = profileImage {
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 50, height: 50)
+                                    .clipShape(Circle())
+                            } else {
+                                Avatar()
+                            }
+                        }
                     }
 
                     Divider()
@@ -32,13 +50,6 @@ struct EditProfileView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Bio").fontWeight(.semibold)
                         TextField("Enter your bio", text: $bio, axis: .vertical)
-                    }
-
-                    Divider()
-
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Link").fontWeight(.semibold)
-                        TextField("Enter your link", text: $link)
                     }
 
                     Divider()
@@ -63,7 +74,7 @@ struct EditProfileView: View {
                 .toolbar(content: {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button {
-                            print("Cancel")
+                            dismiss()
                         } label: {
                             Text("Cancel")
                         }
@@ -71,7 +82,11 @@ struct EditProfileView: View {
 
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            print("Save")
+                            Task {
+                                try await userViewModel.updateUserData(
+                                    bio: bio)
+                            }
+                            dismiss()
                         } label: {
                             Text("Save")
                         }

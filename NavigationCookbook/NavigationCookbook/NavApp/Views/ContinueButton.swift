@@ -27,12 +27,16 @@ struct ContinueButton: View {
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
                 .fontWeight(.bold)
-                .frame(maxWidth: horizontalSizeClass == .compact ? .infinity : 280)
+                .frame(
+                    maxWidth: horizontalSizeClass == .compact ? .infinity : 280
+                )
                 .foregroundStyle(.background)
                 .padding()
                 .background {
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(isEnabled ? Color.accentColor : .gray.opacity(0.6))
+                        .fill(
+                            isEnabled ? Color.accentColor : .gray.opacity(0.6)
+                        )
                         .opacity(configuration.isPressed ? 0.8 : 1)
                         .scaleEffect(configuration.isPressed ? 0.98 : 1)
                         .animation(.easeInOut, value: configuration.isPressed)

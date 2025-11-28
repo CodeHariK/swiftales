@@ -302,7 +302,9 @@ struct SettingsToggleRow: View {
             Spacer()
 
             Toggle("", isOn: $isOn)
-                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.97, green: 0.22, blue: 0.34)))
+                .toggleStyle(
+                    SwitchToggleStyle(
+                        tint: Color(red: 0.97, green: 0.22, blue: 0.34)))
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 16)

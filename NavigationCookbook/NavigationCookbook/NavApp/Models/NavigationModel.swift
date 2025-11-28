@@ -43,7 +43,9 @@ final class NavigationModel: ObservableObject, Codable {
         }
     }
 
-    var objectWillChangeSequence: AsyncPublisher<Publishers.Buffer<ObservableObjectPublisher>> {
+    var objectWillChangeSequence:
+        AsyncPublisher<Publishers.Buffer<ObservableObjectPublisher>>
+    {
         objectWillChange
             .buffer(size: 1, prefetch: .byRequest, whenFull: .dropOldest)
             .values
@@ -62,7 +64,8 @@ final class NavigationModel: ObservableObject, Codable {
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(selectedCategory, forKey: .selectedCategory)
+        try container.encodeIfPresent(
+            selectedCategory, forKey: .selectedCategory)
         try container.encode(recipePath.map(\.id), forKey: .recipePathIds)
         try container.encode(columnVisibility, forKey: .columnVisibility)
     }

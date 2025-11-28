@@ -111,7 +111,8 @@ private struct ExperienceCard: View {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill(
                     selection == experience
-                        ? AnyShapeStyle(Color.accentColor) : AnyShapeStyle(BackgroundStyle()))
+                        ? AnyShapeStyle(Color.accentColor)
+                        : AnyShapeStyle(BackgroundStyle()))
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .stroke(isHovering ? Color.accentColor : .clear)
         }

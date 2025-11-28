@@ -8,9 +8,8 @@ import SwiftUI
 
 final class AppStore: ObservableObject {
     @Published var showExperiencePicker = false
-    
+
     static let shared = AppStore()
-    
+
     private init() {}
 }
-

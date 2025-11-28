@@ -38,7 +38,9 @@ struct TwoColumnContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             TwoColumnContentView()
-                .environmentObject(NavigationModel(columnVisibility: .doubleColumn))
+                .environmentObject(
+                    NavigationModel(columnVisibility: .doubleColumn)
+                )
                 .environmentObject(AppStore.shared)
             TwoColumnContentView()
                 .environmentObject(
